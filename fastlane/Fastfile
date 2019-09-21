@@ -1,0 +1,62 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+
+  lane :deploydev do
+    gradle(
+      task: 'assemble',
+      build_type: 'debug'
+    )
+    updeploygatedev
+
+  end
+
+  lane :updeploygatedev do
+    deploygate(
+      api_token: "cb63b3c5ef2e1aba5c3d3153373cf6f6c810ed6d",
+      user: "HyperionsThs",
+      apk: "./app/build/outputs/apk/dev/debug/app-dev-debug.apk",
+      message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+      distribution_key: "(Optional) Target Distribution Key",
+      distribution_name: "(Optional) Target Distribution Name"
+    )
+  end
+
+    lane :deploystg do
+      gradle(
+        task: 'assemble',
+        build_type: 'debug'
+      )
+      updeploygatestg
+
+    end
+
+    lane :updeploygatestg do
+      deploygate(
+        api_token: "cb63b3c5ef2e1aba5c3d3153373cf6f6c810ed6d",
+        user: "HyperionsThs",
+        apk: "./app/build/outputs/apk/stg/debug/app-stg-debug.apk",
+        message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+        distribution_key: "(Optional) Target Distribution Key",
+        distribution_name: "(Optional) Target Distribution Name"
+      )
+    end
+
+
+
+end

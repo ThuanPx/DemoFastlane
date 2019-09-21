@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.00416">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: gradle" time="1.75819">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: Switch to android updeploygatestg lane" time="0.001112">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: deploygate" time="2.232338">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
